@@ -31,6 +31,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
+using Fjord.Modules.Mathf;
 #endregion
 
 namespace SDL2
@@ -2374,6 +2375,12 @@ namespace SDL2
 			out byte a
 		);
 
+		public static V4 SDL_GetRenderDrawColor(IntPtr renderer) {
+			byte r, g, b, a;
+			SDL_GetRenderDrawColor(renderer, out r, out g, out b, out a);
+			return new V4(r, g, b, a);
+		}
+
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_GetRenderDriverInfo(
 			int index,
@@ -3111,6 +3118,10 @@ namespace SDL2
 			byte b,
 			byte a
 		);
+
+		public static void SDL_SetRenderDrawColor( IntPtr renderer, V4 color ) {
+			SDL_SetRenderDrawColor(renderer, (byte)color.x, (byte)color.y, (byte)color.z, (byte)color.w);
+		}
 
 		/* renderer refers to an SDL_Renderer*, texture to an SDL_Texture* */
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
