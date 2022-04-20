@@ -2375,7 +2375,7 @@ namespace SDL2
 			out byte a
 		);
 
-		public static V4 SDL_GetRenderDrawColor(IntPtr renderer) {
+		public static V4 SDL_GetRenderDrawColor(IntPtr renderer) {//
 			byte r, g, b, a;
 			SDL_GetRenderDrawColor(renderer, out r, out g, out b, out a);
 			return new V4(r, g, b, a);
